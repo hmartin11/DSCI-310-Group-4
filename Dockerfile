@@ -1,7 +1,7 @@
 # Obtain image from this source
 FROM ubcdsci/jupyterlab
 
-# Install python package with package
+# Install python package with package - will add as we go 
 RUN conda install --yes --quiet --channel conda-forge \
     matplotlib=3.5.1 \
     numpy=1.22.2 \
@@ -9,4 +9,5 @@ RUN conda install --yes --quiet --channel conda-forge \
     seaborn=0.11.2 \
     xgboost=1.5.1 \
     scikit-learn=1.0.2
+    
 
