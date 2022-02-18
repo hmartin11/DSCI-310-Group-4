@@ -8,5 +8,6 @@ RUN conda install --yes --quiet --channel conda-forge \
     pandas=1.4.1 \
     seaborn=0.11.2 \
     xgboost=1.5.1 \
-    scikit-learn=1.0.2
+    scikit-learn=1.0.2 \
+    plotly=5.6.0
 
