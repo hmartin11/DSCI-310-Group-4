@@ -1,4 +1,4 @@
-YTt# Code of Conduct
+# Code of Conduct
 
 ## Introduction
 
