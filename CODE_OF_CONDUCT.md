@@ -34,3 +34,7 @@ If one member is unable to do their assigned tasks,  the team will confront one 
 ## Scope
 
 When a person is representing the project, this Code of Conduct applies both within project areas and in public settings. Using an official project e-mail address, publishing via an official social media account, or serving as an appointed representative at an online or offline event are all examples of representing a project.
+
+
+## Reference
+Tidyverse. “Tidyverse.org/CODE_OF_CONDUCT.Md at Master · Tidyverse/Tidyverse.org.” GitHub, github.com/tidyverse/tidyverse.org/blob/master/CODE_OF_CONDUCT.md. 
