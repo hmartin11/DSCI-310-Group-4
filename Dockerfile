@@ -1,5 +1,5 @@
 # Obtain image from this source
-FROM ubcdsci/jupyterlab
+FROM jupyter/scipy-notebook
  
 # Install python package with package
 RUN conda install --yes --quiet --channel conda-forge \
