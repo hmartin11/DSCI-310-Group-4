@@ -22,5 +22,20 @@ import numpy as np
 
 def calculate_metrics(TN, FP, FN, TP):
 
+    recall = TP / (TP + FN)
+    precision = TP / (TP + FP)
+    f1_score = (2 * precision * recall) / (precision + recall)
+
+
+
+    data = {
+        "recall": [round(recall, 3)],
+        "precision": [round(precision, 3)],
+        "f1 score": [round(f1_score, 3)],
+    }
+
+
+
+
     return pd.DataFrame(data)
 
