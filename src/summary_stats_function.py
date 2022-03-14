@@ -25,15 +25,19 @@ import numpy as np
 def get_summary_stats(data_frame):
     # returns a data frame with with the same columns as input,
     # and 4 rows: mean, std, min and max
+
+
     try:
         if not isinstance(data_frame, pd.DataFrame):
             raise AttributeError("Invalid input: Not a DataFrame")
     except Exception as err:
-        print("something has gone wrong", err)
+        print("Something has gone wrong", err)
+        return err
     
     try:
         df = data_frame.sort_values(by=list(df.columns), axis=0)
     except TypeError as err:
+        print("Invalid Data: Not all numeric", err)
         return err
 
     df = df.describe()
