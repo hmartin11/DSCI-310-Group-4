@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 #' Calculate summary statistics
 #'
 #' Creates a new data frame with with the same columns as input and 4 rows, 
@@ -10,7 +14,7 @@
 #'
 #' @return A data frame with four rows. 
 #'   The first row (named mean) lists the mean of each column from the input data frame.
-#'   The second row (named sd) lists the standard deviation of each column from the input data frame.
+#'   The second row (named std) lists the standard deviation of each column from the input data frame.
 #'   It will have the same number of columns as the columns present in input data frame.
 #'
 #' @export
@@ -20,4 +24,4 @@
 
 def get_summary_stats(data_frame):
     # returns a data frame with with the same columns as input,
-    # and 4 rows: mean, sd, min and max
+    # and 4 rows: mean, std, min and max
