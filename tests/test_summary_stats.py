@@ -32,9 +32,7 @@ def test_empty_dataframe():
 # Tests that the outputs of a valid input are correct
 def test_valid_dataframe():
 
-
     # each column tests both whole numbers, integers and decimals data inputs
-    
     data = data = {
         "ID": [0,1,2,3,4],
         "Age": [12,45,20,30,18],
@@ -52,15 +50,32 @@ def test_valid_dataframe():
 
     #exp_df = pd.DataFrame(exp_data)
     
+    actual = ss.get_summary_stats(df)
+    
+    #assert actual == expected
+    pd.testing.assert_frame_equal(actual,exp_df)
 
 
+# Tests that the outputs of a valid input are correct but with categorical data
+def test_valid_dataframe_with_categorical():
+
+    # columns with numerical, categorical and mixed data inputs
+    data = data = {
+        "ID": [0,1,2,3,4],
+        "Age": [0,-10,20,30,-40],
+        "Sex": ["F","M","F","F","M"],
+        "Score": [10.0,10.0,10.0,10.0,10.0],
+        "Random": ["high","low",0,"high",0],
+    }
+    df = pd.DataFrame(data) 
 
 
-    # exp_d = {'ID':pd.Series([df['ID'].mean(),df['ID'].std(),0,4]),
-    # 'Age':pd.Series([df['Age'].mean(),df['Age'].std(),-40,30]),
-    # 'Score':pd.Series(111.11,0,111.11,111.11)}
-    #exp_d.index = ['mean','std','min','max']
-    #expected = pd.DataFrame(exp_d).set_index(['mean','std','min','max'])
+    exp_df = pd.DataFrame({
+        "ID": [df['ID'].mean(), df['ID'].std(), 0, 4],
+        "Age": [df['Age'].mean(),df['Age'].std(),-40,30],
+        "Score": [10.0, 0.0,10.0, 10.0]}, 
+        index=['mean','std','min','max']
+    )
     
     actual = ss.get_summary_stats(df)
     
