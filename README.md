@@ -36,14 +36,24 @@ The project was developed in Python (version 3.9.7) and utilizes the following d
 |seaborn     |   0.11.2 |
 |scikit-learn|   1.0.2  |
 |xgboost     |   1.5.1  |
+|pytest      |   7.1.0  |
 
-To run the project, clone this repository and run the following commands in the terminal.
+Access the Dockerfile[https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/Dockerfile] and Docker image[https://hub.docker.com/repository/docker/dianali/dsci-310_group-4] here.
 
-Pull the image from DockerHub:  
-`docker pull dianali/dsci-310_group-4`  
+To run the project, follow the following steps:
 
-After pulling the image:  
-`docker run --rm -p 8888:8888 dianali/dsci-310_group-4`  
+1. Clone this repository onto the local machine. For more guidance on cloning, follow the instructions here[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository]
+2. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions here[https://docs.docker.com/get-docker/]
+3. Open the terminal and navigate to the repository directory using command lines
+4. Run the following commands:
+    a. Pull the image from DockerHub:`docker pull dianali/dsci-310_group-4`
+    b. After pulling the image:`docker run --rm -p 8888:8888 -v /$(pwd):/home/group-4-project dianali/dsci-310_group-4`  
+5. Copy and paste the resulting link output beginning with 'http://127.0.0.1:8888/lab?token=<your token>'into a web browser to launch Jupyter Lab
+6. In JupyterLab, navigate to the 'group-4-project' directory and open the cloned project respository 
+7. Run the project's analysis
+
+## Testing
+After recreating the project enviornment used during development by following the steps on "How to Run the Project", test the code by running 'pytest tests' from the root project directory.
 
 ## License
 This is an open-sourced project licensed under the MIT License. Please refer to LICENSE.md for more information.
