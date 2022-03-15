@@ -1,4 +1,4 @@
-from src import preprocess as pre
+from src import preprocess as pp
 import pandas as pd
 import pytest
 
@@ -17,18 +17,16 @@ df3_test_result = pd.DataFrame({'Student': [104, 105, 106], 'Grades': [95, 86, 9
 
 
 def test_preprocess_perfect():
-    output1, output2 = pre.preprocess(df1, 0.8)
-    pd.testing.assert_frame_equal(output1,df1_train_result)
-    pd.testing.assert_frame_equal(output2,df1_test_result)
-
-
-    # assert output1 == df1_train_result
-    # assert output2 == df1_test_result
+    trainset_a, testset_a = pp.preprocess(df1, 0.8, 20)
+    assert len(trainset_a.index) == 4
+    assert len(testset_a.index) == 1
     
 def test_preprocess_with_missing_value():
-    assert pre.preprocess(df2, 0.8) == df2_train_result, df2_test_result
+    trainset_b, testset_b = pp.preprocess(df2, 0.8, 20)
+    assert len(trainset_b.index) == 4
+    assert len(testset_b.index) == 1
 
 def test_preprocess_2_fold():
-    assert pre.preprocess(df3, 0.5) == df3_train_result, df3_test_result
-    
-    
+    trainset_c, testset_c = pp.preprocess(df3, 0.5, 20)
+    assert len(trainset_c.index) == 3
+    assert len(testset_c.index) == 3
