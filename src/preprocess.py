@@ -12,5 +12,7 @@
 #' preprocess(dataframe, 0.8)
 
 def preprocess(df, train_frac):
-    return
-
+    df.dropna()
+    train = df.sample(frac = train_frac) #random state is a seed value
+    test = df.drop(train.index)
+    return train,test
