@@ -38,9 +38,12 @@ def get_summary_stats(df):
         print('DataFrame is empty!')
         return df
 
+    df = df.select_dtypes(include=np.number)
+
     new_df = pd.DataFrame(index=['mean','std','min','max'])
 
     for column in df:
+        
         new_df[column] = df[column].mean(),df[column].std(),df[column].min(),df[column].max()
 
     return new_df
