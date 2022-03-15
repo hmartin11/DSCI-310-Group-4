@@ -36,11 +36,11 @@ def get_summary_stats(df):
     
     if df.empty:
         print('DataFrame is empty!')
-        return pd.DataFrame()
+        return df
 
     new_df = pd.DataFrame(index=['mean','std','min','max'])
 
-    for column in data_frame:
-        new_df[column] = pd.Series([data_frame[column].mean(),data_frame[column].std(),data_frame[column].min(),data_frame[column].max()])
+    for column in df:
+        new_df[column] = df[column].mean(),df[column].std(),df[column].min(),df[column].max()
 
     return new_df
