@@ -22,25 +22,25 @@ import numpy as np
 #' @examples
 #' get_summary_stats(train_df)
 
-def get_summary_stats(data_frame):
+def get_summary_stats(df):
     # returns a data frame with with the same columns as input,
     # and 4 rows: mean, std, min and max
 
 
     try:
-        if not isinstance(data_frame, pd.DataFrame):
+        if not isinstance(df, pd.DataFrame):
             raise AttributeError("Invalid input: Not a DataFrame")
     except Exception as err:
         print("Something has gone wrong", err)
         return err
     
-    try:
-        df = data_frame.sort_values(by=list(df.columns), axis=0)
-    except TypeError as err:
-        print("Invalid Data: Not all numeric", err)
-        return err
+    if df.empty:
+        print('DataFrame is empty!')
+        return pd.DataFrame()
 
-    df = df.describe()
-    df.drop(labels=['count', '25%', '50%', '75%'], axis=0, inplace=True)
+    new_df = pd.DataFrame(index=['mean','std','min','max'])
 
-    return df
+    for column in data_frame:
+        new_df[column] = pd.Series([data_frame[column].mean(),data_frame[column].std(),data_frame[column].min(),data_frame[column].max()])
+
+    return new_df

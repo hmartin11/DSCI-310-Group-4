@@ -18,16 +18,13 @@ def test_not_dataframe():
     assert isinstance(actual,expected)
 
 
-# Tests that non-number values in dataframe will result in a TypeError
-def test_not_number_data():
+# Tests that empty dataframe will return dataframe 
+def test_empty_dataframe():
 
-    #invalid entry type String in one column
-    d = {'Name':pd.Series(['A','B','C','D','E']),
-    'Age':pd.Series([1,2,3,4,5]),
-    'Score':pd.Series([0,0,0,0,0])}
-    df = pd.DataFrame(d)
+    # empty dataframe with column names
+    df = pd.DataFrame(columns=['species','name','age'])
 
-    expected = TypeError
+    expected = pd.DataFrame()
     actual = ss.get_summary_stats(df)
     assert isinstance(actual,expected)
 
