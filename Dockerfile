@@ -1,5 +1,5 @@
 # Obtain image from this source
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:8f0a73e76d17
  
 # Install python package with package
 RUN conda install --yes --quiet --channel conda-forge \
@@ -9,5 +9,6 @@ RUN conda install --yes --quiet --channel conda-forge \
     seaborn=0.11.2 \
     xgboost=1.5.1 \
     scikit-learn=1.0.2 \
-    plotly=5.6.0
+    plotly=5.6.0 \
+    pytest=7.1.0
 
