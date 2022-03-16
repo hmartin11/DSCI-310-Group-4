@@ -18,11 +18,9 @@ import seaborn as sns
 # ' @examples
 # ' count_plot(train_df, x, y, "Count plot")
 
-def count_plot(data, x, y, name):
-    fig = sns.countplot(data, hue=y, x = x)
-    column_name = x.title().replace("_", " ")
-    plt.xlabel(column_name)
+def count_plot(data, x, name):
+    fig = sns.countplot(data = data, hue="default_payment", x = x)
+    plt.xlabel(str(x))
     plt.ylabel("count")
     plt.title(name)
-
     return fig
