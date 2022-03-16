@@ -44,7 +44,7 @@ Access the [Dockerfile](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/D
 
 To run the project, follow the following steps:
 
-1. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions here[https://docs.docker.com/get-docker/]
+1. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions [here](https://docs.docker.com/get-docker/)
 2. Open the terminal and run the following commands:
    + Pull the image from DockerHub:```docker pull dianali/dsci-310_group-4```
    + After pulling the image:```docker run --rm -p 8888:8888 -v /$(pwd):/home/group-4-project dianali/dsci-310_group-4```  
