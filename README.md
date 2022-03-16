@@ -42,18 +42,18 @@ Access the Dockerfile[https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/Doc
 
 To run the project, follow the following steps:
 
-1. Clone this repository onto the local machine. For more guidance on cloning, follow the instructions here[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository]
-2. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions here[https://docs.docker.com/get-docker/]
-3. Open the terminal and navigate to the repository directory using command lines
-4. Run the following commands:
+1. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions here[https://docs.docker.com/get-docker/]
+2. Open the terminal and run the following commands:
     a. Pull the image from DockerHub:`docker pull dianali/dsci-310_group-4`
     b. After pulling the image:`docker run --rm -p 8888:8888 -v /$(pwd):/home/group-4-project dianali/dsci-310_group-4`  
-5. Copy and paste the resulting link output beginning with 'http://127.0.0.1:8888/lab?token=<your token>'into a web browser to launch Jupyter Lab
-6. In JupyterLab, navigate to the 'group-4-project' directory and open the cloned project respository 
-7. Run the project's analysis
+3. Copy and paste the resulting link output beginning with 'http://127.0.0.1:8888/lab?token=<your token>'into a web browser to launch Jupyter Lab
+4. Once in JupyterLab, you should be in an empty directory with a folder '/work'. Open a Terminal from within JupyterLab
+5. Clone this repository onto the local machine by running the following command:'git clone https://github.com/DSCI-310/DSCI-310-Group-4' 
+    For more guidance on cloning, follow the instructions here[https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository]
+6. Once you have successfully cloned the project, open the project folder "DSCI-310-Group-4" and run the Jupyter Notebook. *Voila!*
 
 ## Testing
-After recreating the project enviornment used during development by following the steps on "How to Run the Project", test the code by running 'pytest tests' from the root project directory.
+After recreating the project enviornment used during development by following the steps on "How to Run the Project", test the code by running 'pytest' from the root project directory.
 
 ## License
 This is an open-sourced project licensed under the MIT License. Please refer to LICENSE.md for more information.
