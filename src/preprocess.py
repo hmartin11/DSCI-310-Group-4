@@ -11,8 +11,9 @@
 #' @examples
 #' preprocess(dataframe, 0.8, 20)
 
+
 def preprocess(df, train_frac, seed):
     df = df.dropna()
-    train = df.sample(frac = train_frac, random_state = seed) 
+    train = df.sample(frac=train_frac, random_state=seed)
     test = df.drop(train.index)
-    return train,test
+    return train, test
