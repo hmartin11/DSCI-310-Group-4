@@ -12,7 +12,7 @@ def read_data_from_url(url, filepath):
     # write dataframe to filepath
     df.to_csv(filepath, index = False)
 
-def main:
+def main():
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00350/default%20of%20credit%20card%20clients.xls"
     path = r'..\data\raw_card_default_data.csv'
     read_data_from_url(url, path)
