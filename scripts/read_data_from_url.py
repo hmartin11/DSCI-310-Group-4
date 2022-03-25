@@ -5,6 +5,7 @@
 # load libraries/packages or source functions from other scripts
 import pandas as pd
 
+
 # load the dataset
 def read_data_from_url(url, filepath):
     # load the dataset
@@ -13,8 +14,9 @@ def read_data_from_url(url, filepath):
     df.to_csv(filepath, index = False)
 
 def main():
+    ""
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00350/default%20of%20credit%20card%20clients.xls"
-    path = r'..\data\raw_card_default_data.csv'
+    path = 'data/card_default_data.csv'   
     read_data_from_url(url, path)
 
 if __name__ == "__main__":
