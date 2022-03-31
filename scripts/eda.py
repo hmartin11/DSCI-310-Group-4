@@ -9,6 +9,20 @@ import seaborn as sns
 
 def make_heatmap(input_path, output_path):
 
-    df = pd.read_csv(input_path,sep = ",")
+    train_df = pd.read_csv(input_path,sep = ",")
     plt.figure(figsize=(25,25))
     sns.heatmap(train_df.corr(),cbar=True,annot=True,cmap='Reds')
+    plt.savefig('data/plots.png')
+
+
+
+def main():
+
+    input_path = data/processed_df
+
+if __name__ == "__main__":
+    main()
+
+
+
+
