@@ -5,8 +5,20 @@
 # output_path:  Path of where to locally write the file
 
 # load libraries/packages or source functions from other scripts
-import pandas as pd
+
+#from src import preprocess as pp
+import os
+import sys
+sys.path.append('.')
 from src import preprocess as pp
+
+import pandas as pd
+
+
+
+
+#src.preprocess import preprocess as pp
+
 
 def preprocessing_data(input_path, output_path):
     
@@ -22,7 +34,7 @@ def preprocessing_data(input_path, output_path):
 def main():
     ""
     input_path = 'data/card_default_data.csv'
-    output_path = 'data/'   
+    output_path = 'data/processed_df'   
     preprocessing_data(input_path, output_path)
 
 if __name__ == "__main__":
