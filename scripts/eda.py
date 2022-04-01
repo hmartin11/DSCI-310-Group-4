@@ -23,12 +23,13 @@ def make_limit_dist(input_path, output_path1):
     plt.savefig(output_path1) 
 
 
-def make_repayment_hist(input_path, output_path2):
+def make_repayment_hist(input_path, output_path22):
     train_df = pd.read_csv(input_path,sep = ",")
     for column in train_df[["PAY_0", "PAY_2", "PAY_3", "PAY_4", "PAY_5", "PAY_6"]]:
         count_plot(data=train_df, x=column, name ="Repayment status:" + column)
         #fig = plot.fig
-        output_path2 = output_path2 + str(column) + ".png"
+      
+        output_path2 = output_path22+ str(column) + ".png"
         plt.savefig(output_path2) 
 
 def make_class_imbalance(input_path, output_path3):
@@ -56,11 +57,11 @@ def make_summary_table(input_path, output_path4):
 def main():
 
     input_path = "data/processed_train_data.csv"
-    output_path = 'data/heatmap.png'
-    output_path1 = 'data/limit_bal_dist.png'
-    output_path2 = 'data/repayment_status_'
-    output_path3 = 'data/class_imbalance.png'
-    output_path4 = 'data/summary_stats.csv'
+    output_path = 'results/heatmap.png'
+    output_path1 = 'results/limit_bal_dist.png'
+    output_path2 = 'results/repayment_status_'
+    output_path3 = 'results/class_imbalance.png'
+    output_path4 = 'results/summary_stats.csv'
 
     make_heatmap(input_path, output_path)
     make_limit_dist(input_path, output_path1)
