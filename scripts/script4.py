@@ -161,7 +161,9 @@ def script(xtrain, ytrain):
         
 def main():
     ""
-    xtrain = data/
+    xtrain = 'data/processed_X_test_data.csv'
+    ytrain = 'data/processed_y_test_data.csv'
+
     read_data_from_url(url, path)
 
 if __name__ == "__main__":
