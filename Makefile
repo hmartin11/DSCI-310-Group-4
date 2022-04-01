@@ -14,7 +14,7 @@ data/processed_train_data.csv data/processed_test_data.csv data/processed_X_trai
 	python3 scripts/preprocessing_data.py
 
 # obtain tables and figures in created in  exploratory data analysis and write to file (ie. heatmap, )
-esults/heatmap.png results/limit_bal_dist.png results/class_imbalance.png results/repayment_status_PAY_0.png results/repayment_status_PAY_2.png results/repayment_status_PAY_3.png results/repayment_status_PAY_4.png results/repayment_status_PAY_5.png results/repayment_status_PAY_6.png results/summary_stats.csv: scripts/preprocessing_data.py data/processed_train_data.csv
+results/heatmap.png results/limit_bal_dist.png results/class_imbalance.png results/repayment_status_PAY_0.png results/repayment_status_PAY_2.png results/repayment_status_PAY_3.png results/repayment_status_PAY_4.png results/repayment_status_PAY_5.png results/repayment_status_PAY_6.png results/summary_stats.csv: scripts/preprocessing_data.py data/processed_train_data.csv
 	python3 scripts/eda.py
 
 # create model 
