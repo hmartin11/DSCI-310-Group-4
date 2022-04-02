@@ -1,16 +1,11 @@
 # A third script that reads the data from the second script, performs the exploratory data analysis and summarizes the analysis as a figure(s) and a table(s). 
 # These analysis artifacts should be written to files. This should take at least two arguments: (path/filename pointing to the data, a path/filename prefix where to write the figure(s)/table(s) to and what to call it (e.g., results/this_analysis))
 
-# Usage: *.py //update later
+# Usage: python3 scripts/preprocessing_data.py <input_path> <output_path>
 # input_path:   Path to the data file to be read in
 # output_path:  Path of where to locally write the file
 
 # load libraries/packages or source functions from other scripts
-
-
-
-
-
 
 import os
 import sys
@@ -22,6 +17,16 @@ import seaborn as sns
 
 from src.summary_stats_function import get_summary_stats
 
+# parse arguments
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('input_path', type=str,
+                    help='Path to the data file to be read in')
+parser.add_argument('output_path', type=str,
+                    help='Path of where to locally write the file')
+
+args = parser.parse_args()
 
 def make_heatmap(input_path, output_path):
 
@@ -68,23 +73,21 @@ def make_summary_table(input_path, output_path4):
 
 
 
-def main():
+def main(input_path, output_path):
+    output_path0 = output_path + 'heatmap.png'
+    output_path1 = output_path + 'limit_bal_dist.png'
+    output_path2 = output_path + 'repayment_status_'
+    output_path3 = output_path + 'class_imbalance.png'
+    output_path4 = output_path + 'summary_stats.csv'
 
-    input_path = "data/processed_train_data.csv"
-    output_path = 'results/heatmap.png'
-    output_path1 = 'results/limit_bal_dist.png'
-    output_path2 = 'results/repayment_status_'
-    output_path3 = 'results/class_imbalance.png'
-    output_path4 = 'results/summary_stats.csv'
-
-    make_heatmap(input_path, output_path)
+    make_heatmap(input_path, output_path0)
     make_limit_dist(input_path, output_path1)
     make_repayment_hist(input_path, output_path2)
     make_class_imbalance(input_path, output_path3)
     make_summary_table(input_path, output_path4)
 
 if __name__ == "__main__":
-    main()
+    main(args.input_path, args.output_path)
 
 
 

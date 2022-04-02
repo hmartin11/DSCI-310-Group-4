@@ -1,8 +1,11 @@
 # A fourth script that reads the data from the second script, performs the modeling and summarizes the results as a figure(s) and a table(s). 
 # These analysis artifacts should be written to files. This should take at least two arguments: (path/filename pointing to the data, a path/filename prefix where to write the figure(s)/table(s) to and what to call it (e.g., results/this_analysis))
 
-# Usage: *.py //update later
-# input_path:   Path to the data file to be read in
+# Usage: python3 scripts/preprocessing_data.py <input_X_train> <input_y_train> <input_X_test> <input_y_test> <output_path>
+# input_X_train:   Path to the data file for x training set
+# input_y_train:   Path to the data file for y training set
+# input_X_test:   Path to the data file for x testing set
+# input_y_test:   Path to the data file for y testing set
 # output_path:  Path of where to locally write the file
 
 # load libraries/packages or source functions from other scripts
@@ -15,7 +18,7 @@ sys.path.append('.')
 import os
 
 
-
+# import functions
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -55,6 +58,23 @@ from src import function_count_plot as cp
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
+
+# parse arguments
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('input_X_train', type=str,
+                    help='Path to the data file for x training set')
+parser.add_argument('input_y_train', type=str,
+                    help='Path to the data file for y training set')
+parser.add_argument('input_X_test', type=str,
+                    help='Path to the data file for x testing set')
+parser.add_argument('input_y_test', type=str,
+                    help='Path to the data file for y testing set')
+parser.add_argument('output_path', type=str,
+                    help='Path of where to locally write the file')
+
+args = parser.parse_args()
 
 def train_test_models(X_train, y_train, X_test, y_test):
     
@@ -204,14 +224,8 @@ def train_test_models(X_train, y_train, X_test, y_test):
     
         
         
-def main():
-    ""
-    X_train = 'data/processed_X_train_data.csv'
-    y_train = 'data/processed_y_train_data.csv'
-    X_test = 'data/processed_X_test_data.csv'
-    y_test = 'data/processed_y_test_data.csv'
-
+def main(X_train, y_train, X_test, y_test, output_path):
     train_test_models(X_train, y_train, X_test, y_test)
 
 if __name__ == "__main__":
-    main()
+    main(args.input_X_train, args.input_y_train, args.input_X_test, args.input_y_test, args.output_path)
