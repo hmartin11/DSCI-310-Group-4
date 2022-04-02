@@ -76,7 +76,7 @@ parser.add_argument('output_path', type=str,
 
 args = parser.parse_args()
 
-def train_test_models(X_train, y_train, X_test, y_test):
+def train_test_models(X_train, y_train, X_test, y_test, output_path):
     
     X_train = pd.read_csv(X_train)
     y_train = pd.read_csv(y_train)
@@ -124,7 +124,7 @@ def train_test_models(X_train, y_train, X_test, y_test):
 
     scores = cross_validate(pipe, X_train, y_train, return_train_score=True, cv=5, scoring="roc_auc")
     scores_1 = pd.DataFrame(scores)
-    output_path_scores_1 = 'results/scores_1.csv'
+    output_path_scores_1 = output_path + 'scores_1.csv'
     scores_1.to_csv(output_path_scores_1, index = False)
         
     # 32
@@ -145,7 +145,7 @@ def train_test_models(X_train, y_train, X_test, y_test):
     
 
     scores_2 = pd.DataFrame({"C": C, "Train Scores": train_scores, "CV Scores": cv_scores })
-    output_path_scores_2 = 'results/scores_2.csv'
+    output_path_scores_2 = output_path + 'scores_2.csv'
     scores_2.to_csv(output_path_scores_2, index = False)
         
     # 33
@@ -173,7 +173,7 @@ def train_test_models(X_train, y_train, X_test, y_test):
     "absolute_value": np.absolute(model.named_steps["logisticregression"].coef_[0].tolist()),}
         
     df_coefs = pd.DataFrame(coefs, index=feat_names).sort_values("absolute_value", ascending=False)
-    output_path_de_coefs = 'results/coefs.csv'
+    output_path_de_coefs = output_path + 'coefs.csv'
     df_coefs.to_csv(output_path_de_coefs, index = False)
 
 
@@ -201,7 +201,7 @@ def train_test_models(X_train, y_train, X_test, y_test):
     plt.ylabel("TPR (recall)")
     plt.fill_between(fpr, tpr, color='blue', alpha=0.2, label=auc_label)
     plt.legend(loc="best");
-    output_path_fig = 'results/roc.png'
+    output_path_fig = output_path + 'roc.png'
     plt.savefig(output_path_fig)
     
     # 40
@@ -210,7 +210,7 @@ def train_test_models(X_train, y_train, X_test, y_test):
     TN, FP, FN, TP = confusion_matrix(y_test, predict).ravel()
 
     res = cm.calculate_metrics(TN, FP, FN, TP)
-    output_path_res = 'results/metrics.csv'
+    output_path_res = output_path + 'metrics.csv'
     res.to_csv(output_path_res)
 
     plot_confusion_matrix(model,
@@ -219,13 +219,13 @@ def train_test_models(X_train, y_train, X_test, y_test):
                           display_labels=["Non default", "default"],
                           values_format="d",
                           cmap=plt.cm.Blues,)
-    output_path_confusion_mtx = 'results/confusion_matrix.png'
+    output_path_confusion_mtx = output_path + 'confusion_matrix.png'
     plt.savefig(output_path_confusion_mtx)
     
         
         
 def main(X_train, y_train, X_test, y_test, output_path):
-    train_test_models(X_train, y_train, X_test, y_test)
+    train_test_models(X_train, y_train, X_test, y_test, output_path)
 
 if __name__ == "__main__":
     main(args.input_X_train, args.input_y_train, args.input_X_test, args.input_y_test, args.output_path)
