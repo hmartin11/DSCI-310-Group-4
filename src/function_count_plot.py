@@ -20,7 +20,9 @@ import seaborn as sns
 
 def count_plot(data, x, name):
     fig = sns.countplot(data=data, hue="default_payment", x=x)
-    plt.xlabel(str(x))
-    plt.ylabel("count")
-    plt.title(name)
+    plt.xlabel(str(x), fontsize=16)
+    plt.ylabel("count", fontsize=16)
+    plt.title(name, fontsize = 22)
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
     return fig

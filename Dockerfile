@@ -12,3 +12,5 @@ RUN conda install --yes --quiet --channel conda-forge \
     plotly=5.6.0 \
     pytest=7.1.0
 
+# Install python3 package with package
+RUN pip3 install argparse=1.4.0
