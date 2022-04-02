@@ -40,6 +40,7 @@ The objective of this project is to maintain ease of interpretation for the aver
 First, we load and tidy the data. The dataset was split into a 80% training and 20% testing set. The model will be built using only the training data. This gives the abilithy to compute a final performance metric for our model by evaluating it on the testing data. train_test_split() function shuffles the data to ensure the data ending up in the training and test sets is randomized.
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 library(tidyverse)
 library(tidymodels)
 ```
@@ -62,7 +63,7 @@ Great! The dataset is super clean, and no missing value is found.
 
 This part we have a look at some basic statistics of the training set:
 
-````{r attribute box, echo=FALSE, fig.dim = c(8, 6), fig.cap="Summary Stats."}
+````{r attribute-box, echo=FALSE, fig.cap="Summary Stats.", out.width = "80%", warning = FALSE, message = FALSE}
 summary_stat <- read_csv("../results/summary_stats.csv")
 knitr::kable(summary_stat, caption = "Summary Stats")
 ````
@@ -74,7 +75,7 @@ We can see the following information:
 
 To better understand the correlation between variables, we would like to compute and visualize the correlations:
 
-```{r heat-map, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 1: Heat Map"}
+```{r heat-map, echo=FALSE, fig.cap="Heat Map" out.width = "80%", fig.align="center"}
 knitr::include_graphics("../results/heatmap.png")
 ```
 
@@ -97,33 +98,33 @@ Specifically, `PAY_0` has the highest correlation with `default_payment`. This w
 
 First, we look at the amount of given credit (in NT dollars). Credit card limits are likely an indictor of how wealthy someone is since banks tend to give higher limits to clients that have more money with them. Thus, this may be an important feature when predicting if someone is able to pay the bill on time.
 
-```{r limit-dist, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 2: Limit Balance Distribution"}
+```{r limit-dist, echo=FALSE, out.width = "80%", fig.cap="Limit Balance Distribution"}
 knitr::include_graphics("../results/limit_bal_dist.png")
 ```
 
 ### Repayment Status
 
-```{r repayment_status_PAY_0, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 3: Repayment Status PAY_0"}
+```{r repayment-status-PAY-0, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY_0"}
 knitr::include_graphics("../results/repayment_status_PAY_0.png")
 ```
 
-```{r repayment_status_PAY_2, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 4: Repayment Status PAY_2"}
+```{r repayment-status-PAY-2, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY_2"}
 knitr::include_graphics("../results/repayment_status_PAY_2.png")
 ```
 
-```{r repayment_status_PAY_3, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 5: Repayment Status PAY_3"}
+```{r repayment-status-PAY-3, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_3"}
 knitr::include_graphics("../results/repayment_status_PAY_3.png")
 ```
 
-```{r repayment_status_PAY_4, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 6: Repayment Status PAY_4"}
+```{r repayment-status-PAY-4, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_4"}
 knitr::include_graphics("../results/repayment_status_PAY_4.png")
 ```
 
-```{r repayment_status_PAY_5, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 7: Repayment Status PAY_5"}
+```{r repayment-status-PAY-5, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_5"}
 knitr::include_graphics("../results/repayment_status_PAY_5.png")
 ```
 
-```{r repayment_status_PAY_6, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 8: Repayment Status PAY_6"}
+```{r repayment-status-PAY-6, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_6"}
 knitr::include_graphics("../results/repayment_status_PAY_6.png")
 ```
 
@@ -133,7 +134,7 @@ Looking at the above plots on repayment status shows that if a client defaults o
 
 ### Class Imbalance
 
-```{r class-imbalance, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 8: Count Plot"}
+```{r class-imbalance, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Count Plot"}
 knitr::include_graphics("../results/class_imbalance.png")
 ```
 The above plot shows the percentage of rows with default payment = 0 versus default payment = 1. Cleary there is class imbalance in this dataset. Because of this, we will use the area under the Receiver Operating Characterisitc curve (ROC AUC) as our primary metric to evaluate our model instead of accuracy, which tends to be missleading in cases of class imbalance. ROC AUC evalauates how good the model is as distinguishing between classes, and gives a more accurate sense of how well our model generalizes when dealing with class imbalance.
@@ -148,9 +149,9 @@ To handle categorical values, we will apply one-hot-encoding. This creates binar
 
 Firstly, we will try a baseline model to act as a comparison measure for the final model built. Using a pipeline to do this ensures that the model is built using just the training data, and that the testing data has no influence on the model. 5-fold Cross validation is used to give a more robust measure of performance error. K-fold Cross-validation spilts the training data into k folds, and each time one fold is the validation set. Each fold fits the model on the training portion and uses one fold as a validation set to calculate a performance metric, which can be averaged to get a overall score of how well the model does. This ensures that outliers don't negatively influence the performance metric.
 
-````{r score_1, echo=FALSE}
-score_1 <- read_csv("../results/scores_1.csv")
-knitr::kable(score_1)
+````{r score-1, echo=FALSE, warning = FALSE, message = FALSE}
+score-1 <- read_csv("../results/scores_1.csv")
+knitr::kable(score-1)
 ````
 
 ### Model 1: Logistic Regression
@@ -159,9 +160,9 @@ Next, a logistic regression model is fitted to the training data. Logistic regre
 
 Hyperparameter optimization is carried out to find the best value of C for the data in hopes to reduce bias and variance. Cross-validation is used to test how well the model performs on unseen data during hyperparemter opimization, enabling performance metrics to be calculated to compare different values of C.
 
-````{r score_2, echo=FALSE}
-score_1 <- read_csv("../results/scores_2.csv")
-knitr::kable(score_2)
+````{r score-2, echo=FALSE, warning = FALSE, message = FALSE}
+score-2 <- read_csv("../results/scores_2.csv")
+knitr::kable(score-2)
 ````
 
 Next, the logistic regression model with the optimized C value is fitted to the training data. The model is built using pipelines to ensure all data preprocessing is constant and that no information from the testing set leaks into the training of the model.
@@ -170,7 +171,7 @@ Next, the logistic regression model with the optimized C value is fitted to the 
 
 Next, we will look at feature importance. In logistic regression, the magnitude and direction of the learned coefficients explain the relationship between a explanatory feature and the response variable.
 
-````{r coef, echo=FALSE}
+````{r coef, echo=FALSE, warning = FALSE, message = FALSE}
 coefs <- read_csv("../results/coefs.csv")
 knitr::kable(coefs)
 ````
@@ -196,17 +197,17 @@ Due to the large number of features, we only looked at the first 2 most importan
 
 Finally, the model will be evaluated by predicting on the test dataset. Performance metrics including area under the ROC curve, f1-score, precision and recall will be calculated. Precision is the ratio of true postive and total positives. Recall is the measure of the model correctly identifying true positives. F1-score is the harmonic mean of precision and recall.
 
-```{r roc, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 9: ROC"}
+```{r roc, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="ROC"}
 knitr::include_graphics("../results/roc.png")
 ```
 
 The test ROC AUC is almost the same as the cross-validation ROC AUC so we can conclude that there is little optimization bias and we are not overfitting. Area under the ROC curve is the classifier's ability to distinguish between classes. So 78% of the time, the model is able to correctly distinguish between class 0 and class 1.
 
-````{r metrics, echo=FALSE}
+````{r metrics, echo=FALSE, warning = FALSE, message = FALSE}
 metrics <- read_csv("../results/metrics.csv")
 knitr::kable(metrics)
 ````
-```{r confusion_matrix, echo=FALSE, fig.dim = c(8, 6), fig.cap="Figure 10: Confusion matrix"}
+```{r confusion_matrix, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Confusion matrix"}
 knitr::include_graphics("../results/confusion_matrix.png")
 ```
 
