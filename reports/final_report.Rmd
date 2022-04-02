@@ -45,19 +45,7 @@ library(tidyverse)
 library(tidymodels)
 ```
 
-First we have a look at our dataset:
-
-```{r default_credit_card, echo=FALSE, message=FALSE, out.width="80%"}
-#knitr::kable(head(df), caption = "Default Credit Card Dataset")
-``` 
-
-Before any data analysis can be done let's check if the dataset has null/missing values that may affect further analysis:
-
-```{r clean-data, message=FALSE, warning=FALSE}
-#data_set <- df.isnull().sum()
-#knitr::kable(data_set)
-```
-Great! The dataset is super clean, and no missing value is found.
+Before any data analysis can be done let's check if the dataset has null/missing values that may affect further analysis: The dataset is super clean, and no missing value is found.
 
 ### Statistics information
 
@@ -75,7 +63,7 @@ We can see the following information:
 
 To better understand the correlation between variables, we would like to compute and visualize the correlations:
 
-```{r heat-map, echo=FALSE, fig.cap="Heat Map" out.width = "80%", fig.align="center"}
+```{r heat-map, echo=FALSE, fig.cap="Heat Map", out.width = "80%", fig.align="center"}
 knitr::include_graphics("../results/heatmap.png")
 ```
 
@@ -150,8 +138,8 @@ To handle categorical values, we will apply one-hot-encoding. This creates binar
 Firstly, we will try a baseline model to act as a comparison measure for the final model built. Using a pipeline to do this ensures that the model is built using just the training data, and that the testing data has no influence on the model. 5-fold Cross validation is used to give a more robust measure of performance error. K-fold Cross-validation spilts the training data into k folds, and each time one fold is the validation set. Each fold fits the model on the training portion and uses one fold as a validation set to calculate a performance metric, which can be averaged to get a overall score of how well the model does. This ensures that outliers don't negatively influence the performance metric.
 
 ````{r score-1, echo=FALSE, warning = FALSE, message = FALSE}
-score-1 <- read_csv("../results/scores_1.csv")
-knitr::kable(score-1)
+score_1 <- read_csv("../results/scores_1.csv")
+knitr::kable(score_1)
 ````
 
 ### Model 1: Logistic Regression
@@ -161,8 +149,8 @@ Next, a logistic regression model is fitted to the training data. Logistic regre
 Hyperparameter optimization is carried out to find the best value of C for the data in hopes to reduce bias and variance. Cross-validation is used to test how well the model performs on unseen data during hyperparemter opimization, enabling performance metrics to be calculated to compare different values of C.
 
 ````{r score-2, echo=FALSE, warning = FALSE, message = FALSE}
-score-2 <- read_csv("../results/scores_2.csv")
-knitr::kable(score-2)
+score_2 <- read_csv("../results/scores_2.csv")
+knitr::kable(score_2)
 ````
 
 Next, the logistic regression model with the optimized C value is fitted to the training data. The model is built using pipelines to ensure all data preprocessing is constant and that no information from the testing set leaks into the training of the model.
