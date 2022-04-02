@@ -9,13 +9,60 @@
 
 #from src import preprocess as pp
 import os
+#%matplotlib inline
 import sys
 sys.path.append('.')
-from src import preprocess as pp
+import os
 
+
+
+import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+import seaborn as sns
+import xgboost as xgb
+from sklearn.compose import ColumnTransformer, make_column_transformer
+from sklearn.dummy import DummyClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.impute import SimpleImputer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    classification_report,
+    confusion_matrix,
+    f1_score,
+    make_scorer,
+    plot_confusion_matrix,
+)
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    cross_val_score,
+    cross_validate,
+    train_test_split,
+)
+from sklearn.pipeline import Pipeline, make_pipeline
+from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, StandardScaler
+from sklearn.svm import SVC
+import random
+import plotly.express as px
+import plotly.figure_factory as ff
 
-def script(xtrain, ytrain):
+
+from src import preprocess as pp
+from src import summary_stats_function as ss
+from src import metrics_function as cm
+from src import function_count_plot as cp
+from sklearn.model_selection import cross_val_predict
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+
+def train_test_models(X_train, y_train, X_test, y_test):
+    
+    X_train = pd.read_csv(X_train)
+    y_train = pd.read_csv(y_train)
+    X_test = pd.read_csv(X_test)
+    y_test = pd.read_csv(y_test)
+    
     # 29
     numeric_feats = [     # apply scaling
     "LIMIT_BAL",
@@ -46,12 +93,11 @@ def script(xtrain, ytrain):
     
     # 30
     ct = make_column_transformer(
-    (StandardScaler(), numeric_feats,),
-    (OneHotEncoder(handle_unknown="ignore"), categorical_feats,)
-    
-    # 31
-    from sklearn.model_selection import cross_val_predict
+        (StandardScaler(), numeric_feats,),
+        (OneHotEncoder(handle_unknown="ignore"), categorical_feats,),
 
+    )    
+    # 31
     dummy = DummyClassifier()
 
     pipe = make_pipeline(ct, dummy)
@@ -83,7 +129,7 @@ def script(xtrain, ytrain):
     scores_2.to_csv(output_path_scores_2, index = False)
         
     # 33
-    best_C = scores.loc[scores["CV Scores"].idxmax(), "C"]
+    best_C = scores_2.loc[scores_2["CV Scores"].idxmax(), "C"]
     ## TODO
         
     # 34
@@ -107,7 +153,8 @@ def script(xtrain, ytrain):
     "absolute_value": np.absolute(model.named_steps["logisticregression"].coef_[0].tolist()),}
         
     df_coefs = pd.DataFrame(coefs, index=feat_names).sort_values("absolute_value", ascending=False)
-    df_coefs.to_csv(output_path, index = False)
+    output_path_de_coefs = 'results/coefs.csv'
+    df_coefs.to_csv(output_path_de_coefs, index = False)
 
 
     x0_2_OR = np.exp(df_coefs.iat[0,0])
@@ -116,8 +163,6 @@ def script(xtrain, ytrain):
     ## TODO
         
     # 39
-    from sklearn.metrics import roc_curve
-    from sklearn.metrics import roc_auc_score
 
     # prediction probabilities on test set 
     lr_prob = model.predict_proba(X_test)[:,1]
@@ -136,7 +181,7 @@ def script(xtrain, ytrain):
     plt.ylabel("TPR (recall)")
     plt.fill_between(fpr, tpr, color='blue', alpha=0.2, label=auc_label)
     plt.legend(loc="best");
-    output_path_fig = 'results/fig.png'
+    output_path_fig = 'results/roc.png'
     plt.savefig(output_path_fig)
     
     # 40
@@ -145,7 +190,7 @@ def script(xtrain, ytrain):
     TN, FP, FN, TP = confusion_matrix(y_test, predict).ravel()
 
     res = cm.calculate_metrics(TN, FP, FN, TP)
-    output_path_res = 'results/res.csv'
+    output_path_res = 'results/metrics.csv'
     res.to_csv(output_path_res)
 
     plot_confusion_matrix(model,
@@ -161,10 +206,12 @@ def script(xtrain, ytrain):
         
 def main():
     ""
-    xtrain = 'data/processed_X_test_data.csv'
-    ytrain = 'data/processed_y_test_data.csv'
+    X_train = 'data/processed_X_train_data.csv'
+    y_train = 'data/processed_y_train_data.csv'
+    X_test = 'data/processed_X_test_data.csv'
+    y_test = 'data/processed_y_test_data.csv'
 
-    read_data_from_url(url, path)
+    train_test_models(X_train, y_train, X_test, y_test)
 
 if __name__ == "__main__":
     main()
