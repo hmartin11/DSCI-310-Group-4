@@ -28,17 +28,26 @@ parser.add_argument('output_path', type=str,
 
 args = parser.parse_args()
 
+
+
 def make_heatmap(input_path, output_path):
 
     train_df = pd.read_csv(input_path,sep = ",")
-    plt.figure(figsize=(25,25))
+    plt.figure(figsize=(20,20))
     sns.heatmap(train_df.corr(),cbar=True,annot=True,cmap='Reds')
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
     plt.savefig(output_path)
 
 def make_limit_dist(input_path, output_path1):
     train_df = pd.read_csv(input_path,sep = ",")
     plt.figure(figsize = (16,9))
     sns.distplot(train_df['LIMIT_BAL'],kde=True,bins=50, rug = True, color="green")
+    plt.title("Limit Balance Distribution", fontsize = 20)
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
+    plt.xlabel("Limit Balance", fontsize=16)
+    plt.ylabel("Density", fontsize=16)
     plt.savefig(output_path1) 
 
 
@@ -47,6 +56,10 @@ def make_repayment_hist(input_path, output_path22):
     for column in train_df[["PAY_0", "PAY_2", "PAY_3", "PAY_4", "PAY_5", "PAY_6"]]:
         count_plot(data=train_df, x=column, name ="Repayment status:" + column)
         #fig = plot.fig
+        #plt.rcParams.update({'font.size': 22})
+        plt.rc('figure', titlesize=16)
+        plt.xticks(fontsize=14)
+        plt.yticks(fontsize=14)
       
         output_path2 = output_path22+ str(column) + ".png"
         plt.savefig(output_path2) 
