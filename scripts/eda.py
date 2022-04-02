@@ -1,3 +1,17 @@
+# A third script that reads the data from the second script, performs the exploratory data analysis and summarizes the analysis as a figure(s) and a table(s). 
+# These analysis artifacts should be written to files. This should take at least two arguments: (path/filename pointing to the data, a path/filename prefix where to write the figure(s)/table(s) to and what to call it (e.g., results/this_analysis))
+
+# Usage: *.py //update later
+# input_path:   Path to the data file to be read in
+# output_path:  Path of where to locally write the file
+
+# load libraries/packages or source functions from other scripts
+
+
+
+
+
+
 import os
 import sys
 sys.path.append('.')
