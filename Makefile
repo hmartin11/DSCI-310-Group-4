@@ -22,8 +22,19 @@ results/heatmap.png results/limit_bal_dist.png results/class_imbalance.png resul
 results/scores_1.csv results/scores_2.csv results/coefs.csv results/roc.png results/confusion_matrix.png results/metrics.csv: scripts/train_test_models.py data/processed_X_test_data.csv data/processed_y_test_data.csv data/processed_X_train_data.csv data/processed_y_train_data.csv
 	python3 scripts/train_test_models.py "data/processed_X_train_data.csv" "data/processed_y_train_data.csv" "data/processed_X_test_data.csv" "data/processed_y_test_data.csv" "results/"
 
+# render analysis report to html
+reports/final_report.html: reports/final_report.Rmd references.bib
+	Rscript -e "rmarkdown::render('reports/final_report.Rmd')"
+
+# render analysis report and save it as a pdf document
+reports/final_report.pdf: reports/final_report.Rmd references.bib
+	Rscript -e "rmarkdown::render('reports/final_report.Rmd', 'pdf_document')"
     
 clean :
 	rm -f data/*.csv
 	rm -f results/*.csv
 	rm -f results/*.png
+	rm -f reports/final_report.html
+	rm -f reports/final_report.pdf
+	rm -f reports/final_report.aux
+	rm -f reports/final_report.out
