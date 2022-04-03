@@ -47,6 +47,8 @@ Access the [Dockerfile](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/D
 
 To run the project, follow the following steps:
 
+### Running the Project via Docker
+
 1. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions [here](https://docs.docker.com/get-docker/)
 2. Open the terminal and run the following commands:
    + Pull the image from DockerHub:```docker pull dianali/dsci-310_group-4```
@@ -65,7 +67,27 @@ To run the project, follow the following steps:
 After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory.
 
 ## Running Scripts
-After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory.
+After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```make all``` in the terminal from the root project directory.
+
+To clean the workspace, run ```make clean```
+
+### Running the file via MakeFile:
+
+Via MakeFile
+1. clone the repository (same step as in the docker version)
+
+2. Install all dependencies listed above
+
+3. Open terminal, and inside the root project directory run: 
+
+```make all```
+
+ This creates the report.
+
+To reset the repository run the following in terminal 
+
+```make clean```
+
 
 ## License
 This is an open-sourced project licensed under the MIT License. Please refer to LICENSE.md for more information.
