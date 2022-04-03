@@ -7,8 +7,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 RUN pip3 install argparse==1.4.0
 
 # Install required dependencies for R Markdown
-RUN Rscript -e "install_version('knitr')"
+
 RUN Rscript -e "install_version('tidyverse')"
+RUN Rscript -e "install.packages('knitr', dependencies = TRUE)"
+RUN Rscript -e "install.packages('bookdown')"
+RUN Rscript -e "tinytex::install_tinytex()"
+
  
 # Install python package with package
 RUN conda install --yes --quiet --channel conda-forge \
@@ -20,3 +24,8 @@ RUN conda install --yes --quiet --channel conda-forge \
     scikit-learn=1.0.2 \
     plotly=5.6.0 \
     pytest=7.1.0
+    
+    
+   
+
+
