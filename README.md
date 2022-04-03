@@ -39,6 +39,9 @@ The project was developed in Python (version 3.9.7) and utilizes the following d
 |scikit-learn|   1.0.2  |
 |xgboost     |   1.5.1  |
 |pytest      |   7.1.0  |
+|argparse    |   1.4.0  |
+|knitr       |   1.38   |
+|tidyverse   |   1.3.1  |
 
 Access the [Dockerfile](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/Dockerfile) and [Docker image](https://hub.docker.com/repository/docker/dianali/dsci-310_group-4) here.
 
@@ -59,6 +62,9 @@ To run the project, follow the following steps:
 6. Once you have successfully cloned the project, open the project folder "DSCI-310-Group-4" and run the Jupyter Notebook. *Voila!*
 
 ## Testing
+After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory.
+
+## Running Scripts
 After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory.
 
 ## License
