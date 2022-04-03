@@ -16,6 +16,5 @@ RUN conda install --yes --quiet --channel conda-forge \
 RUN pip3 install argparse==1.4.0
 
 # Install required dependencies for R Markdown
-RUN Rscript -e "require(devtools); install_version('knitr', version = '1.38', repos = 'http://cran.us.r-project.org')" -1
-RUN Rscript -e "require(devtools); install_version('tidyverse', version = '1.3.1', repos = 'http://cran.us.r-project.org')" -1
-RUN Rscript -e "require(devtools); install_version('tidymodels', version = '0.2.0', repos = 'http://cran.us.r-project.org')" -1
+RUN Rscript -e "install_version('knitr', version = '1.38')"
+RUN Rscript -e "install_version('tidyverse', version = '1.3.1')"
