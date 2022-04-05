@@ -1,12 +1,6 @@
 # Obtain image from this source
 # FROM rocker/rstudio
 FROM jupyter/scipy-notebook:8f0a73e76d17
-
-# Install required dependencies for R Markdown
-RUN Rscript -e "install.packages('knitr', dependencies = TRUE)"
-RUN Rscript -e "install.packages('bookdown')"
-RUN Rscript -e "tinytex::install_tinytex()"
-
  
 # Install python3 package with package
 RUN pip3 install argparse==1.4.0 \
@@ -22,4 +16,8 @@ RUN pip3 install argparse==1.4.0 \
 USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential r-base python3.9 python3-pip python3-setuptools python3-dev
-    
+
+# Install required dependencies for R Markdown
+RUN Rscript -e "install.packages('knitr', dependencies = TRUE)"
+RUN Rscript -e "install.packages('bookdown')"
+RUN Rscript -e "tinytex::install_tinytex()"
