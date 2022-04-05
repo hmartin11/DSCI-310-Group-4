@@ -1,5 +1,6 @@
 # Obtain image from this source
-FROM rocker/rstudio
+# FROM rocker/rstudio
+FROM jupyter/scipy-notebook:8f0a73e76d17
 
 RUN apt-get update && apt-get install -y --no-install-recommends build-essential r-base python3.9 python3-pip python3-setuptools python3-dev
 
