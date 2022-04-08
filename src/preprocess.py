@@ -35,9 +35,6 @@ def preprocess(df, train_frac, seed):
         print("DataFrame is empty!")
         return df
     
-    
-    
-    
     df = df.dropna()
     train = df.sample(frac=train_frac, random_state=seed)
     test = df.drop(train.index)
