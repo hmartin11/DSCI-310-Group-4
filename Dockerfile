@@ -20,4 +20,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends build-essential
 # Install required dependencies for R Markdown
 RUN Rscript -e "install.packages('knitr', dependencies = TRUE)"
 RUN Rscript -e "install.packages('bookdown')"
-RUN Rscript -e "tinytex::install_tinytex()"
+RUN Rscript -e "tinytex::install_tinytex()". 
