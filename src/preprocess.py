@@ -8,11 +8,31 @@
 #'
 #' @export
 #'
-#' @examples
-#' preprocess(dataframe, 0.8, 20)
-
-
 def preprocess(df, train_frac, seed):
+
+    try:
+        if not isinstance(df, pd.DataFrame):
+            raise AttributeError("Invalid input: df is not a DataFrame")
+        
+        if not isinstance(train_frac, float):
+            raise AttributeError("Invalid input: train_frac is not a float")
+    
+        if not train_frac < 1 and train_frac > 0:
+            raise AttributeError("Invalid input: train_frac is not a float between 0 and 1")
+            
+    
+        if not isinstance(seed, int):
+            raise AttributeError("Invalid input: Seed is not an integer")
+            
+    except Exception as err:
+        print("Something has gone wrong", err)
+        return err
+
+    if df.empty:
+        print("DataFrame is empty!")
+        return df
+    
+    
     df = df.dropna()
     train = df.sample(frac=train_frac, random_state=seed)
     test = df.drop(train.index)
