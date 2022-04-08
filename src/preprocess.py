@@ -1,4 +1,4 @@
-#' drop all rows containing null values then split the df into training and testing part
+#' preprocess is to drop all rows containing null values then split the df into training and testing part
 #'
 #' @param dataframe The shuffled data frame
 #' @param train_frac The percent that ends up in the training set (range 0-1).
@@ -8,6 +8,10 @@
 #'
 #' @export
 #'
+#' @examples
+#' preprocess(dataframe, 0.8, 1)
+
+
 def preprocess(df, train_frac, seed):
 
     try:
@@ -20,7 +24,6 @@ def preprocess(df, train_frac, seed):
         if not train_frac < 1 and train_frac > 0:
             raise AttributeError("Invalid input: train_frac is not a float between 0 and 1")
             
-    
         if not isinstance(seed, int):
             raise AttributeError("Invalid input: Seed is not an integer")
             
@@ -33,7 +36,10 @@ def preprocess(df, train_frac, seed):
         return df
     
     
+    
+    
     df = df.dropna()
     train = df.sample(frac=train_frac, random_state=seed)
     test = df.drop(train.index)
     return train, test
+
