@@ -45,8 +45,14 @@ The project was developed in Python (version 3.9.7) and utilizes the following d
 |xgboost     |   1.5.1  |
 |pytest      |   7.1.0  |
 |argparse    |   1.4.0  |
-|knitr       |   1.38   |
-|tidyverse   |   1.3.1  |
+|pandoc      |   2.1    |
+|r-base      |   4.0.5  |
+|r-tidyverse |   1.3.1  |
+|r-tidymodels|   0.1.4  |
+|r-rmarkdown |   2.13   |
+|r-bookdown  |   0.25   |
+|r-tinytex   |   0.37   |
+|r-knitr     |   1.37   |
 
 Access the [Dockerfile](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/Dockerfile) and [Docker image](https://hub.docker.com/repository/docker/dianali/dsci-310_group-4) here.
 
