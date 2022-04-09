@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
 
 # ' Plot a Countplots
@@ -9,7 +10,7 @@ import seaborn as sns
 # ' @param array a list of numbers which represents the different payments for x-values
 # ' @param string the name of the plot
 # '
-# ' @return A plot of the counts between two parameters of the given dataframe.
+# ' @return An plot of the counts between two parameters of the given data frame.
 # '         The plot should have a x label, a y label and a title.
 # '
 # ' @export
@@ -19,9 +20,6 @@ import seaborn as sns
 
 
 def count_plot(df, x, name):
-    # returns a figure of a counts between two parameters of the given dataframe,
-    # and has a given title, and correct x and y labels.
-
     try:
         if not isinstance(df, pd.DataFrame):
             raise AttributeError("Invalid input: df is not a DataFrame")
@@ -41,7 +39,9 @@ def count_plot(df, x, name):
         return df
     
     fig = sns.countplot(data=df, hue="default_payment", x=x)
-    plt.xlabel(str(x))
-    plt.ylabel("count")
-    plt.title(name)
+    plt.xlabel(str(x), fontsize=16)
+    plt.ylabel("count", fontsize=16)
+    plt.title(name, fontsize = 22)
+    plt.yticks(fontsize=16)
+    plt.xticks(fontsize=16)
     return fig
