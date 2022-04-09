@@ -1,6 +1,7 @@
 # This script preprocesses data and splits data into training and test splits.
 # This script takes 3 arguments (input_path, output_path_train, output_path_test)
-# Usage: *.py //update later
+
+# Usage: python3 scripts/preprocessing_data.py <input_path> <output_path>
 # input_path:   Path to the data file to be read in
 # output_path:  Path of where to locally write the file
 
@@ -14,12 +15,18 @@ from src import preprocess as pp
 
 import pandas as pd
 
+# parse arguments
+import argparse
 
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('input_path', type=str,
+                    help='Path to the data file to be read in')
+parser.add_argument('output_path', type=str,
+                    help='Path of where to locally write the file')
 
+args = parser.parse_args()
 
-#src.preprocess import preprocess as pp
-
-
+# funtion
 def preprocessing_data(input_path, output_path):
 
     df = pd.read_csv(input_path,sep = ",")
@@ -42,11 +49,8 @@ def preprocessing_data(input_path, output_path):
     y_test.to_csv(output_path + 'processed_y_test_data.csv', index = False)
 
 
-def main():
-    ""
-    input_path = 'data/card_default_data.csv'
-    output_path = 'data/'   
+def main(input_path, output_path):   
     preprocessing_data(input_path, output_path)
 
 if __name__ == "__main__":
-    main()
+    main(args.input_path, args.output_path)
