@@ -11,10 +11,6 @@ labels = ["0", "1"]
 plot = c.count_plot(data, "PAY_0", "Count Plot")
 fig, ax = plt.subplots()
 
-def test_return_type():
-    """Test for the correct return type of the function is an axes object"""
-    assert type(plot) == type(ax)
-    
 def test_readability():
     """Test for the correct label for X,y axis, legend and title"""
     assert plot.get_xlabel() == "PAY_0"
