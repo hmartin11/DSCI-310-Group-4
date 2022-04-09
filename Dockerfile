@@ -11,7 +11,7 @@ RUN pip3 install argparse==1.4.0 \
     scikit-learn==1.0.2 \
     plotly==5.6.0 \
     pytest==7.1.0 \
-    pandoc==2.17
+    pandoc==2.1
 
 # Install R packages with conda for R Markdown
 RUN conda install --yes --quiet --channel conda-forge \
