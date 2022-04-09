@@ -11,6 +11,9 @@ output:
     
 bibliography: references.bib
 ---
+# Abstract
+
+Financial institutions incur monetary loss when a client or borrower is unable to pay their interest or their initial principal on time. Thus, it is necessary for such institutions to assess the risk that potential borrowers cannot repay their loan in determining their eligibility for the loan in the first place. The present study endeavors to answer the question "Is there a way to effectively predict whether or not a client will default on their credit card payment?" and uncover the most significant features that contribute to the higher likelihood of defaulting. The result of predictive accuracy of the projected likelihood of default will be more beneficial than the binary result of categorization - credible or not credible customers - from the standpoint of risk management.
 
 # Introduction
 
