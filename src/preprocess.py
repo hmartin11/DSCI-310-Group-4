@@ -11,6 +11,8 @@
 #' @examples
 #' preprocess(dataframe, 0.8, 1)
 
+import pandas as pd
+
 
 def preprocess(df, train_frac, seed):
 
