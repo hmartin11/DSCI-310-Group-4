@@ -55,21 +55,19 @@ To run the project, follow the following steps:
 ### Running the Project via Docker
 
 1. Launch Docker, otherwise the following steps may not work. If you have not installed Docker, follow the hardware specific instructions [here](https://docs.docker.com/get-docker/)
-2. Open the terminal and run the following commands:
-   + Pull the image from DockerHub:```docker pull dianali/dsci-310_group-4```
-   + After pulling the image:```docker run --rm -p 8888:8888 -v /$(pwd):/home/group-4-project dianali/dsci-310_group-4```  
-3. Copy and paste the resulting link output beginning with `http://127.0.0.1:8888/lab?token=<your token>`into a web browser to launch Jupyter Lab
-    
-4. Once in JupyterLab, you should be in an empty directory with a folder '/work'. Open a Terminal from within JupyterLab
-    
-5. Clone this repository onto the local machine by running the following command:```git clone https://github.com/DSCI-310/DSCI-310-Group-4```
+2. Clone this repository onto the local machine by running the following command:```git clone https://github.com/DSCI-310/DSCI-310-Group-4```
    + NOTE: This will likely require a GitHub account and an active authentication token, cloning using the SSH link may not work.
    + For more guidance on cloning, follow the instructions [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    
-6. Once you have successfully cloned the project, open the project folder "DSCI-310-Group-4" and run the Jupyter Notebook. *Voila!*
+3. Once you have successfully cloned the project, open the terminal and navigate to the root of this repository using ```cd <folder name or path to project folder>```. If successful, typing ```pwd``` should return ```path/to/project/folder/DSCI-310-Group-4```
+4. Run the following commands:
+   + Pull the image from DockerHub:```docker pull dianali/dsci-310_group-4:v0.22.0```
+   + After pulling the image:```docker run --rm -p 8888:8888 -v /$(pwd):/home/jovyan/work/DSCI-310-Group-4 dianali/dsci-310_group-4``` 
+5. Copy and paste the resulting link output beginning with `http://127.0.0.1:8888/lab?token=<your token>`into a web browser to launch Jupyter Lab  
+6. Once in JupyterLab, you should be in an empty directory with a folder '/work'. Open the 'work' folder.
+7. Open the project folder "DSCI-310-Group-4" and run the Jupyter Notebook. *Voila!*
 
 ## Testing
-After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory.
+After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```pytest``` in the terminal from the root project directory from within JupyterLab.
 
 ## Running Scripts
 After recreating the project environment used during development by following the steps on "How to Run the Project", test the code by running the command line ```make all``` in the terminal from the root project directory.
