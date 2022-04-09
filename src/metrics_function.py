@@ -1,6 +1,5 @@
-from turtle import TPen
 import pandas as pd
-import numpy as np
+
 
 
 ## parameters: TN, FP, FN, TP
