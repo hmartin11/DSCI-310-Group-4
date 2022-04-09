@@ -1,3 +1,4 @@
+from turtle import TPen
 import pandas as pd
 import numpy as np
 
@@ -24,9 +25,17 @@ def calculate_metrics(FP, FN, TP):
     try:
         if type(FP) != int or type(FN) != int or type(TP) != int:
             raise ValueError  
+
         
     except ValueError as err:
-        print("Something has gone wrong")
+        print("Invalid input: not a float")
+        return err
+
+    try:
+        if (TP + FN) == 0 or (TP + FP) == 0:
+            raise AttributeError
+    except AttributeError as err:
+        print("cannot divide by 0")
         return err
         
 

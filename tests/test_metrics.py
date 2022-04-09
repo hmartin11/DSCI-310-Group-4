@@ -17,9 +17,20 @@ df = pd.DataFrame(data)
 def test_invalid_input():
 
     expected = ValueError
-    actual = metrics_function.calculate_metrics(40.2, 12.0, 67.99)
+    actual = metrics_function.calculate_metrics("42", 12.0, 67.99)
     assert isinstance(actual, expected)
 
+
+# Test to make sure we aren't dividing by 0 
+def test_illegal_recall_precision_inputs():
+
+    expected = AttributeError
+    actual = metrics_function.calculate_metrics(40, 0, 0)
+    assert isinstance(actual, expected)
+
+    expected = AttributeError
+    actual = metrics_function.calculate_metrics(0, 7, 0)
+    assert isinstance(actual, expected)
 
 
 # Test if it produces correct data frame
