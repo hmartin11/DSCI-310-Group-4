@@ -8,7 +8,6 @@ import numpy as np
 #'
 #'
 #' A function for calculating classification metrics including recall, precision and f1-score
-#' @param TN integer representing the number of true negatives classified by model
 #' @param TP integer representing the number of true postives classified by model
 #' @param FP integer representing the number of false positives classified by model
 #' @param FN integer representing the number of false negatives classified by model
@@ -17,10 +16,19 @@ import numpy as np
 #'  a pandas data frame with one row and 3 columns: precision, recall and f1-score
 #'
 #' @examples
-#' calculate_metrics(TN=87, FP=14, FN=12, TP=70)
+#' calculate_metrics(FP=14, FN=12, TP=70)
 
 
-def calculate_metrics(TN, FP, FN, TP):
+def calculate_metrics(FP, FN, TP):
+
+    try:
+        if type(FP) != int or type(FN) != int or type(TP) != int:
+            raise ValueError  
+        
+    except ValueError as err:
+        print("Something has gone wrong")
+        return err
+        
 
     recall = TP / (TP + FN)
     precision = TP / (TP + FP)
