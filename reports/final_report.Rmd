@@ -41,8 +41,8 @@ First, we load and tidy the data. The dataset was split into a 80% training and 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
-library(tidyverse)
-library(tidymodels)
+#library(tidyverse)
+#library(tidymodels)
 ```
 
 Before any data analysis can be done let's check if the dataset has null/missing values that may affect further analysis: The dataset is super clean, and no missing value is found.
@@ -52,7 +52,7 @@ Before any data analysis can be done let's check if the dataset has null/missing
 This part we have a look at some basic statistics of the training set:
 
 ````{r attribute-box, echo=FALSE, fig.cap="Summary Stats.", out.width = "80%", warning = FALSE, message = FALSE}
-summary_stat <- read_csv("../results/summary_stats.csv")
+summary_stat <- read.csv("../results/summary_stats.csv")
 knitr::kable(summary_stat, caption = "Summary Stats")
 ````
 
@@ -138,7 +138,7 @@ To handle categorical values, we will apply one-hot-encoding. This creates binar
 Firstly, we will try a baseline model to act as a comparison measure for the final model built. Using a pipeline to do this ensures that the model is built using just the training data, and that the testing data has no influence on the model. 5-fold Cross validation is used to give a more robust measure of performance error. K-fold Cross-validation spilts the training data into k folds, and each time one fold is the validation set. Each fold fits the model on the training portion and uses one fold as a validation set to calculate a performance metric, which can be averaged to get a overall score of how well the model does. This ensures that outliers don't negatively influence the performance metric.
 
 ````{r score-1, echo=FALSE, warning = FALSE, message = FALSE}
-score_1 <- read_csv("../results/scores_1.csv")
+score_1 <- read.csv("../results/scores_1.csv")
 knitr::kable(score_1)
 ````
 
@@ -149,7 +149,7 @@ Next, a logistic regression model is fitted to the training data. Logistic regre
 Hyperparameter optimization is carried out to find the best value of C for the data in hopes to reduce bias and variance. Cross-validation is used to test how well the model performs on unseen data during hyperparemter opimization, enabling performance metrics to be calculated to compare different values of C.
 
 ````{r score-2, echo=FALSE, warning = FALSE, message = FALSE}
-score_2 <- read_csv("../results/scores_2.csv")
+score_2 <- read.csv("../results/scores_2.csv")
 knitr::kable(score_2)
 ````
 
@@ -160,7 +160,7 @@ Next, the logistic regression model with the optimized C value is fitted to the 
 Next, we will look at feature importance. In logistic regression, the magnitude and direction of the learned coefficients explain the relationship between a explanatory feature and the response variable.
 
 ````{r coef, echo=FALSE, warning = FALSE, message = FALSE}
-coefs <- read_csv("../results/coefs.csv")
+coefs <- read.csv("../results/coefs.csv")
 knitr::kable(coefs)
 ````
 
@@ -192,7 +192,7 @@ knitr::include_graphics("../results/roc.png")
 The test ROC AUC is almost the same as the cross-validation ROC AUC so we can conclude that there is little optimization bias and we are not overfitting. Area under the ROC curve is the classifier's ability to distinguish between classes. So 78% of the time, the model is able to correctly distinguish between class 0 and class 1.
 
 ````{r metrics, echo=FALSE, warning = FALSE, message = FALSE}
-metrics <- read_csv("../results/metrics.csv")
+metrics <- read.csv("../results/metrics.csv")
 knitr::kable(metrics)
 ````
 ```{r confusion_matrix, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Confusion matrix"}

@@ -15,6 +15,7 @@ RUN pip3 install argparse==1.4.0 \
 
 # Install R packages with conda for R Markdown
 RUN conda install --yes --quiet --channel conda-forge \
+    r-base=4.0.5 \
     r-tidyverse=1.3.1 \
     r-tidymodels=0.1.4 \
     r-rmarkdown=2.13 \
