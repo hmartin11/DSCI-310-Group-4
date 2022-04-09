@@ -7,7 +7,7 @@ import seaborn as sns
 # 'Creates countplots for data frame with all the given x and y values,
 # '
 # ' @param A data frame with all the values of which we want the countplots
-# ' @param array a list of numbers which represents the different payments for x-values
+# ' @param string the column name heading for x-values
 # ' @param string the name of the plot
 # '
 # ' @return An plot of the counts between two parameters of the given data frame.
