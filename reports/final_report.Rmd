@@ -44,8 +44,6 @@ First, we load and tidy the data. The dataset was split into a 80% training and 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
-#library(tidyverse)
-#library(tidymodels)
 ```
 
 Before any data analysis can be done let's check if the dataset has null/missing values that may affect further analysis: The dataset is super clean, and no missing value is found.
@@ -95,27 +93,27 @@ knitr::include_graphics("../results/limit_bal_dist.png")
 
 ### Repayment Status
 
-```{r repayment-status-PAY-0, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY_0"}
+```{r repayment-status-PAY-0, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY 0"}
 knitr::include_graphics("../results/repayment_status_PAY_0.png")
 ```
 
-```{r repayment-status-PAY-2, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY_2"}
+```{r repayment-status-PAY-2, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Repayment Status PAY 2"}
 knitr::include_graphics("../results/repayment_status_PAY_2.png")
 ```
 
-```{r repayment-status-PAY-3, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_3"}
+```{r repayment-status-PAY-3, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY 3"}
 knitr::include_graphics("../results/repayment_status_PAY_3.png")
 ```
 
-```{r repayment-status-PAY-4, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_4"}
+```{r repayment-status-PAY-4, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY 4"}
 knitr::include_graphics("../results/repayment_status_PAY_4.png")
 ```
 
-```{r repayment-status-PAY-5, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_5"}
+```{r repayment-status-PAY-5, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY 5"}
 knitr::include_graphics("../results/repayment_status_PAY_5.png")
 ```
 
-```{r repayment-status-PAY-6, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY_6"}
+```{r repayment-status-PAY-6, echo=FALSE, out.width = "80%",fig.align="center", fig.cap="Repayment Status PAY 6"}
 knitr::include_graphics("../results/repayment_status_PAY_6.png")
 ```
 
