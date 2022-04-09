@@ -209,7 +209,12 @@ def train_test_models(X_train, y_train, X_test, y_test, output_path):
 
     TN, FP, FN, TP = confusion_matrix(y_test, predict).ravel()
 
-    res = cm.calculate_metrics(TN, FP, FN, TP)
+    TN = int(TN)
+    FP = int(FP)
+    FN = int(FN)
+    TP = int(TP)
+
+    res = cm.calculate_metrics(FP, FN, TP)
     output_path_res = output_path + 'metrics.csv'
     res.to_csv(output_path_res)
 
