@@ -5,8 +5,8 @@ FROM jupyter/scipy-notebook:8f0a73e76d17
 RUN pip3 install group4package==0.1.1 \
     argparse==1.4.0 \
     matplotlib==3.5.1 \
-    numpy==1.22.2 \
-    pandas==1.4.1 \
+    numpy==1.21.5 \
+    pandas==1.4.2 \
     seaborn==0.11.2 \
     xgboost==1.5.1 \
     scikit-learn==1.0.2 \
