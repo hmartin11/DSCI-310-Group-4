@@ -51,10 +51,10 @@ import plotly.express as px
 import plotly.figure_factory as ff
 
 
-from src import preprocess as pp
-from src import summary_stats_function as ss
-from src import metrics_function as cm
-from src import function_count_plot as cp
+from group4package.group4package import preprocess as pp
+from group4package.group4package import summary_stats_function as ss
+from group4package.group4package import metrics_function as cm
+from group4package.group4package import function_count_plot as cp
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
