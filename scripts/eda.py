@@ -10,12 +10,12 @@
 import os
 import sys
 sys.path.append('.')
-from src.function_count_plot import count_plot
+from group4package.group4package import count_plot
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.summary_stats_function import get_summary_stats
+from group4package.group4package import get_summary_stats
 
 # parse arguments
 import argparse
