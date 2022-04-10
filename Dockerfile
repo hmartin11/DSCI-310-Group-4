@@ -2,7 +2,8 @@
 FROM jupyter/scipy-notebook:8f0a73e76d17
  
 # Install python3 packages for scripts
-RUN pip3 install argparse==1.4.0 \
+RUN pip3 install group4package==0.1.1 \
+    argparse==1.4.0 \
     matplotlib==3.5.1 \
     numpy==1.22.2 \
     pandas==1.4.1 \
