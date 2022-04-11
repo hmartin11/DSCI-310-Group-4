@@ -16,7 +16,7 @@ RUN pip3 install group4package==0.1.1 \
 
 # Install R packages with conda for R Markdown
 RUN conda install --yes --quiet --channel conda-forge \
-    python=3.9.7\
+    python=3.9.7 \
     r-base=4.0.5 \
     r-tidyverse=1.3.1 \
     r-tidymodels=0.1.4 \
@@ -27,4 +27,5 @@ RUN conda install --yes --quiet --channel conda-forge \
 
 USER root
 
-RUN apt-get update && apt-get -y install --no-install-recommends lmodern
+RUN apt-get update && apt-get -y install --no-install-recommends \
+    lmodern=2.004.5-6
