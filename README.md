@@ -60,6 +60,8 @@ The project was developed in Python (version 3.9.7) and utilizes the following d
 
 Access the [Dockerfile](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/Dockerfile) and [Docker image](https://hub.docker.com/repository/docker/dianali/dsci-310_group-4) here.
 
+Access to the Group 4 Package Repository is [here](https://github.com/DSCI-310/Group-4-Package).
+
 To run the project, follow the following steps:
 
 ### Running the Project via Docker
