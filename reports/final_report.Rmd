@@ -54,7 +54,7 @@ This part we have a look at some basic statistics of the training set:
 
 ````{r attribute-box, echo=FALSE, fig.cap="Summary Stats.", out.width = "80%", warning = FALSE, message = FALSE}
 summary_stat <- read.csv("../results/summary_stats.csv")
-knitr::kable(summary_stat, caption = "Summary Stats")
+knitr::kable(summary_stat[,c(1:7,26)], caption = "Summary Stats")
 ````
 
 We can see the following information:
