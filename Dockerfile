@@ -28,4 +28,4 @@ RUN conda install --yes --quiet --channel conda-forge \
 USER root
 
 RUN apt-get update && apt-get -y install --no-install-recommends \
-    lmodern=2.004.5
+    lmodern=2.004.5-6
