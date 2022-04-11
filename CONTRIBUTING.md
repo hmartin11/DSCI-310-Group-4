@@ -14,7 +14,7 @@ It would be great help if you include:
 * Any information about your local setup that might aid in debugging.
 
 If you'd like to contribute a feature or bug fix, you can fork our repo and submit a pull request. 
-We will review pull requests within 7 days.
+We will review pull requests within a month.
 
 If you are proposing a feature:
 

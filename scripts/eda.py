@@ -10,12 +10,12 @@
 import os
 import sys
 sys.path.append('.')
-from src.function_count_plot import count_plot
+from group4package.function_count_plot import count_plot
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from src.summary_stats_function import get_summary_stats
+from group4package.summary_stats_function import get_summary_stats
 
 # parse arguments
 import argparse
@@ -54,7 +54,7 @@ def make_limit_dist(input_path, output_path1):
 def make_repayment_hist(input_path, output_path22):
     train_df = pd.read_csv(input_path,sep = ",")
     for column in train_df[["PAY_0", "PAY_2", "PAY_3", "PAY_4", "PAY_5", "PAY_6"]]:
-        count_plot(data=train_df, x=column, name ="Repayment status:" + column)
+        count_plot(df=train_df, x=column, name ="Repayment status:" + column)
         #fig = plot.fig
         #plt.rcParams.update({'font.size': 22})
         plt.rc('figure', titlesize=16)

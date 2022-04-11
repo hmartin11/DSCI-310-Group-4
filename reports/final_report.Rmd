@@ -2,13 +2,13 @@
 title: 'DSCI 310 Group 4: Default payments in Taiwan and comparison of the predictive accuracy of probability of default'
 author: "Shravan Chaniara, Jordan Yu, Diana Liang, Hannah Martin"
 output:
+  bookdown::pdf_document2:
+    
+    toc: true
+    number_sections: false
   bookdown::html_document2:
     toc: true
     number_sections: false
-  bookdown::pdf_document2:
-    toc: true
-    number_sections: false
-    
 bibliography: references.bib
 ---
 # Abstract
@@ -40,7 +40,7 @@ The objective of this project is to maintain ease of interpretation for the aver
 
 ### Exploratory Data Analysis
 
-First, we load and tidy the data. The dataset was split into a 80% training and 20% testing set. The model will be built using only the training data. This gives the abilithy to compute a final performance metric for our model by evaluating it on the testing data. train_test_split() function shuffles the data to ensure the data ending up in the training and test sets is randomized.
+First, we load and tidy the data. The dataset was split into a 80% training and 20% testing set. The model will be built using only the training data. This gives the ability to compute a final performance metric for our model by evaluating it on the testing data. train_test_split() function shuffles the data to ensure the data ending up in the training and test sets is randomized.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
@@ -54,7 +54,7 @@ This part we have a look at some basic statistics of the training set:
 
 ````{r attribute-box, echo=FALSE, fig.cap="Summary Stats.", out.width = "80%", warning = FALSE, message = FALSE}
 summary_stat <- read.csv("../results/summary_stats.csv")
-knitr::kable(summary_stat[,c(1:7,26)], caption = "Summary Stats" )
+knitr::kable(summary_stat[,c(1:7,26)], caption = "Summary Stats")
 ````
 
 We can see the following information:
@@ -85,7 +85,7 @@ Specifically, `PAY_0` has the highest correlation with `default_payment`. This w
 
 ### LIMIT_BAL
 
-First, we look at the amount of given credit (in NT dollars). Credit card limits are likely an indictor of how wealthy someone is since banks tend to give higher limits to clients that have more money with them. Thus, this may be an important feature when predicting if someone is able to pay the bill on time.
+First, we look at the amount of given credit (in NT dollars). Credit card limits are likely an indicator of how wealthy someone is since banks tend to give higher limits to clients that have more money with them. Thus, this may be an important feature when predicting if someone is able to pay the bill on time.
 
 ```{r limit-dist, echo=FALSE, out.width = "80%", fig.cap="Limit Balance Distribution"}
 knitr::include_graphics("../results/limit_bal_dist.png")
@@ -126,9 +126,9 @@ Looking at the above plots on repayment status shows that if a client defaults o
 ```{r class-imbalance, echo=FALSE, out.width = "80%", fig.align="center", fig.cap="Count Plot"}
 knitr::include_graphics("../results/class_imbalance.png")
 ```
-The above plot shows the percentage of rows with default payment = 0 versus default payment = 1. Cleary there is class imbalance in this dataset. Because of this, we will use the area under the Receiver Operating Characterisitc curve (ROC AUC) as our primary metric to evaluate our model instead of accuracy, which tends to be missleading in cases of class imbalance. ROC AUC evalauates how good the model is as distinguishing between classes, and gives a more accurate sense of how well our model generalizes when dealing with class imbalance.
+The above plot shows the percentage of rows with default payment = 0 versus default payment = 1. Clearly there is class imbalance in this dataset. Because of this, we will use the area under the Receiver Operating Characteristic curve (ROC AUC) as our primary metric to evaluate our model instead of accuracy, which tends to be misleading in cases of class imbalance. ROC AUC evaluates how good the model is as distinguishing between classes, and gives a more accurate sense of how well our model generalizes when dealing with class imbalance.
 
-### Preprossesing
+### Preprocessing
 
 We apply scaling to numeric features to ensure the model built will be robust and not sensitive to the scale of each individual feature. To do this, we use the StandardScaler() function to set the sample mean to 0 and standard deviation to 1.
 
@@ -145,7 +145,7 @@ knitr::kable(score_1)
 
 ### Model 1: Logistic Regression
 
-Next, a logistic regression model is fitted to the training data. Logistic regression uses the training data to learn coefficients, which then can be used to calculate prediction probabilities of the each class using the sigmoid function. This allows us to calculate the probability of a client defaulting on their credit card based on their data. The hyperparameter C is used to control the fundatamental tradeoff of bias and variance, to reduce the likeliness of the model overfitting or underfitting. We chose logistic regression over more complex classifiers such as ensemble trees because it is easier to interpret and efficient to train. The predicted coeficients give information about feature importance and direction of association, making the model easily interpreted. Moreover, since the dataset is significantly larger than the number of features, logistic regression is less likely to overfit because it is a low variance model.
+Next, a logistic regression model is fitted to the training data. Logistic regression uses the training data to learn coefficients, which then can be used to calculate prediction probabilities of the each class using the sigmoid function. This allows us to calculate the probability of a client defaulting on their credit card based on their data. The hyperparameter C is used to control the fundamental tradeoff of bias and variance, to reduce the likeliness of the model overfitting or underfitting. We chose logistic regression over more complex classifiers such as ensemble trees because it is easier to interpret and efficient to train. The predicted coefficients give information about feature importance and direction of association, making the model easily interpreted. Moreover, since the dataset is significantly larger than the number of features, logistic regression is less likely to overfit because it is a low variance model.
 
 Hyperparameter optimization is carried out to find the best value of C for the data in hopes to reduce bias and variance. Cross-validation is used to test how well the model performs on unseen data during hyperparemter opimization, enabling performance metrics to be calculated to compare different values of C.
 
@@ -200,7 +200,7 @@ knitr::kable(metrics)
 knitr::include_graphics("../results/confusion_matrix.png")
 ```
 
-It appears that the model does significantly better for the non-default class, since precision, recall, and f1-score are very high. Recall is partically low for the default class, and very high for the non-default class. Thus this model is very good at indentifying clients who will pay their bill on time. Precision can be intrepreted as when the model predicts class 0 (non-default) it is correct 84% of the time, and when it predicts class 1 it is correct 64% of the time, which is not as good.
+It appears that the model does significantly better for the non-default class, since precision, recall, and f1-score are very high. Recall is particularly low for the default class, and very high for the non-default class. Thus this model is very good at identifying clients who will pay their bill on time. Precision can be interpreted as when the model predicts class 0 (non-default) it is correct 84% of the time, and when it predicts class 1 it is correct 64% of the time, which is not as good.
 
 \newpage
 # Discussion
@@ -215,5 +215,6 @@ According to the model, the most important feature was repayment status. Specifi
 \
 \
 Overall, the model provides insight into important features that may benefit financial institutions when managing risk, and allows an institute to calculate the probability that an individual client will default.
+
 
 # References

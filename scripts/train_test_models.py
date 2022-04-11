@@ -23,7 +23,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import xgboost as xgb
 from sklearn.compose import ColumnTransformer, make_column_transformer
 from sklearn.dummy import DummyClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -51,10 +50,10 @@ import plotly.express as px
 import plotly.figure_factory as ff
 
 
-from src import preprocess as pp
-from src import summary_stats_function as ss
-from src import metrics_function as cm
-from src import function_count_plot as cp
+from group4package import preprocess as pp
+from group4package import summary_stats_function as ss
+from group4package import metrics_function as cm
+from group4package import function_count_plot as cp
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
@@ -209,7 +208,12 @@ def train_test_models(X_train, y_train, X_test, y_test, output_path):
 
     TN, FP, FN, TP = confusion_matrix(y_test, predict).ravel()
 
-    res = cm.calculate_metrics(TN, FP, FN, TP)
+    TN = int(TN)
+    FP = int(FP)
+    FN = int(FN)
+    TP = int(TP)
+
+    res = cm.calculate_metrics(FP, FN, TP)
     output_path_res = output_path + 'metrics.csv'
     res.to_csv(output_path_res)
 
