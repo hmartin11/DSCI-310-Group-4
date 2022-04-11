@@ -11,7 +11,7 @@
 import os
 import sys
 sys.path.append('.')
-from group4package.group4package import preprocess as pp
+from group4package import preprocess as pp
 
 import pandas as pd
 
