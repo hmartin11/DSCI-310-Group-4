@@ -202,7 +202,7 @@ knitr::include_graphics("../results/confusion_matrix.png")
 
 It appears that the model does significantly better for the non-default class, since precision, recall, and f1-score are very high. Recall is particularly low for the default class, and very high for the non-default class. Thus this model is very good at identifying clients who will pay their bill on time. Precision can be interpreted as when the model predicts class 0 (non-default) it is correct 84% of the time, and when it predicts class 1 it is correct 64% of the time, which is not as good.
 
-
+\newpage
 # Discussion
 
 Looking at the results above, the analysis has a few limitations. One of the main limitations is the extrapolation of data. The dataset used was from Taiwan so the model may not apply properly for financial institutions and people outside of Taiwan. The other limitation is that logistic regression favors interpretability over prediction accuracy. The coefficients are easy to understand while the logistic regression is not as accurate as other algorithms.
