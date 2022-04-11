@@ -106,5 +106,10 @@ To reset the repository run the following in terminal
 
 
 ## License
-This is an open-sourced project licensed under the MIT License. Please refer to LICENSE.md for more information.
+This is an open-sourced project licensed under the MIT License.
 
+[![License: CC BY-SA  4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/) 
+*DSCI-310-Group4-Project © 2022 by DSCI-310-Group4 is licensed under CC BY-SA 4.0. View this license [here](http://creativecommons.org/licenses/by-sa/4.0/).*
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+*DSCI-310-Group4-Project © 2022 by DSCI-310-Group4 is licensed under MIT. Refer to [LICENSE.md](https://github.com/DSCI-310/DSCI-310-Group-4/blob/main/LICENSE.md) for more information.*
