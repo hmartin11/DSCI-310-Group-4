@@ -24,3 +24,7 @@ RUN conda install --yes --quiet --channel conda-forge \
     r-bookdown=0.25 \
     r-tinytex=0.37 \
     r-knitr=1.37 
+
+USER root
+
+RUN apt-get update && apt-get -y install --no-install-recommends lmodern
