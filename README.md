@@ -1,4 +1,4 @@
-# DSCI-310-Group-4
+# DSCI-310-Group-4: Classifying Credit Card Defaults
 
 ## Contributors
 
